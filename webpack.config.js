@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
+var autoprefixer = require('autoprefixer-core');
 
 module.exports = {
   cache: true,
@@ -22,11 +23,17 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.js$/, loaders: ['react-hot', 'babel'], exclude: /node_modules/ }
+      { test: /\.js$/, loaders: ['react-hot', 'babel'], exclude: /node_modules/ },
+      {
+        test: /\.scss$/,
+        loaders: ['style', 'css', 'postcss', 'sass'],
+        exclude: /node_modules/
+      }
     ]
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
-  ]
+  ],
+  postcss: [autoprefixer]
 };
