@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Card from 'components/Card';
 
 export default class Game extends Component {
   constructor(props) {
@@ -7,11 +8,9 @@ export default class Game extends Component {
   }
 
   renderCards(cardVals) {
-    return cardVals.map((card, index) => {
+    return cardVals.map((cardVal, index) => {
       return (
-        <div key={index} className="Card">
-          {card}
-        </div>
+        <Card key={index} value={cardVal} />
       );
     });
   }
