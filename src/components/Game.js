@@ -5,21 +5,33 @@ export default class Game extends Component {
   constructor(props) {
     super(props);
     this.renderCards = this.renderCards.bind(this);
+
+    this.state = {
+      cards: [
+        {value: 2},
+        {value: 4},
+        {value: 1},
+        {value: 1},
+        {value: 3},
+        {value: 4},
+        {value: 2},
+        {value: 3}
+      ]
+    };
   }
 
-  renderCards(cardVals) {
-    return cardVals.map((cardVal, index) => {
+  renderCards(cards) {
+    return cards.map((card, index) => {
       return (
-        <Card key={index} value={cardVal} />
+        <Card key={index} value={card.value} />
       );
     });
   }
 
   render() {
-    var cards = [2, 4, 1, 1, 3, 4, 2, 3];
     return (
       <div className="Game">
-        {this.renderCards(cards)}
+        {this.renderCards(this.state.cards)}
       </div>
     );
   }
