@@ -5,25 +5,21 @@ export default class Card extends Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
-
-    this.state = {
-      flipped: false,
-      matched: false
-    };
   }
 
   handleClick(e) {
-    var flipped = this.state.flipped;
-    this.setState({flipped: !flipped});
+    if (!this.props.flipped) {
+      this.props.checkMatch(this.props.value, this.props.id);
+    }
   }
 
   render() {
     var classes = classnames(
       'Card',
-      {'Card--flipped': this.state.flipped},
-      {'Card--matched': this.state.matched}
+      {'Card--flipped': this.props.flipped},
+      {'Card--matched': this.props.matched}
     );
-    var cardValue = this.state.flipped ? this.props.value : '';
+    var cardValue = this.props.flipped ? this.props.value : '';
     return (
       <div className={classes} onClick={this.handleClick}>
         {cardValue}
