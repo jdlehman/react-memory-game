@@ -1,8 +1,8 @@
 {
-  "name": "react-memory",
-  "version": "0.1.0",
-  "description": "Memory game with react",
-  "main": "src/server.js",
+  "name": "react-memory-game",
+  "version": "1.0.0",
+  "description": "Learn React by building a memory match game",
+  "main": "src/index.js",
   "scripts": {
     "build": "./node_modules/.bin/webpack",
     "serve": "./node_modules/.bin/webpack-dev-server --no-info --port 4000"
@@ -16,7 +16,8 @@
   "keywords": [
     "react",
     "example",
-    "javascript"
+    "javascript",
+    "tutorial"
   ],
   "devDependencies": {
     "autoprefixer-core": "^5.2.1",
