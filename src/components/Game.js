@@ -18,29 +18,35 @@ export default class Game extends Component {
         {value: 2, matched: false, flipped: false},
         {value: 3, matched: false, flipped: false}
       ],
-      lastCard: null
+      lastCard: null,
+      locked: false
     };
   }
 
   checkMatch(value, id) {
+    if (this.state.locked) {
+      return;
+    }
+
     var cards = this.state.cards;
     cards[id].flipped = true;
-    this.setState({cards});
+    this.setState({cards, locked: true});
     if (this.state.lastCard) {
       if (value === this.state.lastCard.value) {
         cards[id].matched = true;
         cards[this.state.lastCard.id].matched = true;
-        this.setState({cards, lastCard: null});
+        this.setState({cards, lastCard: null, locked: false});
       } else {
         setTimeout(() => {
           cards[id].flipped = false;
           cards[this.state.lastCard.id].flipped = false;
-          this.setState({cards, lastCard: null});
+          this.setState({cards, lastCard: null, locked: false});
         }, 1000);
       }
     } else {
       this.setState({
-        lastCard: {id, value}
+        lastCard: {id, value},
+        locked: false
       });
     }
   }
